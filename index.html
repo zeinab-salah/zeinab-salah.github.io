@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zeinab Salah | Full Stack Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #0f2040;
+    --blue: #1a56a0;
+    --accent: #3b82f6;
+    --gold: #f0a500;
+    --white: #f4f7ff;
+    --gray: #8898b3;
+    --card: rgba(255,255,255,0.04);
+    --border: rgba(255,255,255,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,22,40,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 1.3rem;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--gray); text-decoration: none;
+    font-size: 0.9rem; font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,86,160,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 80%, rgba(59,130,246,0.1) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; z-index: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 700px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 50px;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent); font-weight: 500;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.05; letter-spacing: -2px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  h1 .highlight {
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    font-size: 1.1rem; color: var(--gray); line-height: 1.8;
+    max-width: 520px; margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    padding: 0.85rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    transition: all 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #2563eb; transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 0.85rem 2rem; border-radius: 8px;
+    text-decoration: none; font-weight: 500; font-size: 0.95rem;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 4rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
+    color: var(--white);
+  }
+  .stat-num span { color: var(--gold); }
+  .stat-label { font-size: 0.8rem; color: var(--gray); letter-spacing: 0.5px; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); font-weight: 500; margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif; font-weight: 700;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    letter-spacing: -1px; margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.2rem 1rem;
+    text-align: center;
+    transition: all 0.25s;
+    cursor: default;
+  }
+  .skill-card:hover {
+    border-color: var(--accent);
+    background: rgba(59,130,246,0.08);
+    transform: translateY(-4px);
+  }
+  .skill-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+  .skill-name { font-size: 0.85rem; font-weight: 500; color: var(--white); }
+  .skill-cat { font-size: 0.7rem; color: var(--gray); margin-top: 2px; }
+
+  /* EXPERIENCE */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 20px; top: 0; bottom: 0;
+    width: 1px; background: var(--border);
+  }
+  .exp-item {
+    display: flex; gap: 2rem; margin-bottom: 2.5rem;
+    padding-left: 3rem; position: relative;
+  }
+  .exp-dot {
+    position: absolute; left: 14px; top: 6px;
+    width: 13px; height: 13px; border-radius: 50%;
+    background: var(--navy); border: 2px solid var(--accent);
+    z-index: 1;
+  }
+  .exp-dot.current { background: var(--accent); box-shadow: 0 0 10px rgba(59,130,246,0.5); }
+  .exp-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem; flex: 1;
+    transition: border-color 0.2s;
+  }
+  .exp-card:hover { border-color: rgba(59,130,246,0.3); }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+  .exp-company { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.05rem; }
+  .exp-period {
+    font-size: 0.78rem; color: var(--accent);
+    background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+    padding: 0.2rem 0.7rem; border-radius: 20px;
+  }
+  .exp-role { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.8rem; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.88rem; color: #a0b4cc; line-height: 1.7;
+    padding-left: 1rem; position: relative;
+  }
+  .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent); }
+
+  /* COURSES */
+  .courses-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .course-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.2rem 1.4rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+    transition: all 0.2s;
+  }
+  .course-card:hover { border-color: rgba(240,165,0,0.4); transform: translateY(-3px); }
+  .course-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+  .course-name { font-size: 0.88rem; font-weight: 500; line-height: 1.5; }
+
+  /* CONTACT */
+  #contact { text-align: center; }
+  .contact-card {
+    background: linear-gradient(135deg, rgba(26,86,160,0.2), rgba(59,130,246,0.08));
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 20px; padding: 3.5rem;
+    max-width: 600px; margin: 0 auto;
+  }
+  .contact-email {
+    font-family: 'Syne', sans-serif; font-size: 1.1rem;
+    color: var(--accent); text-decoration: none;
+    display: block; margin: 1rem 0 1.5rem;
+  }
+  .contact-info { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .contact-item { font-size: 0.88rem; color: var(--gray); }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--gray); font-size: 0.82rem;
+  }
+
+  /* SCROLL REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Z<span>.</span>Salah</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="dot"></div> Available for Freelance Work</div>
+    <h1>Full Stack<br><span class="highlight">Developer</span></h1>
+    <p class="hero-sub">
+      I build modern web applications — from clean frontend interfaces to powerful backend APIs. Specialized in React, Angular, ASP.NET MVC & C#.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Hire Me</a>
+      <a href="#experience" class="btn-outline">View Experience</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Companies</div>
+      </div>
+      <div>
+        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-label">Technologies</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-label">What I work with</div>
+    <div class="section-title">Technical Skills</div>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-card"><div class="skill-icon">⚛️</div><div class="skill-name">React.js</div><div class="skill-cat">Frontend</div></div>
+    <div class="skill-card"><div class="skill-icon">🅰️</div><div class="skill-name">Angular</div><div class="skill-cat">Frontend</div></div>
+    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">HTML5 / CSS3</div><div class="skill-cat">Frontend</div></div>
+    <div class="skill-card"><div class="skill-icon">💛</div><div class="skill-name">JavaScript</div><div class="skill-cat">Frontend</div></div>
+    <div class="skill-card"><div class="skill-icon">🔷</div><div class="skill-name">ASP.NET MVC</div><div class="skill-cat">Backend</div></div>
+    <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-name">C#</div><div class="skill-cat">Backend</div></div>
+    <div class="skill-card"><div class="skill-icon">🐘</div><div class="skill-name">PHP</div><div class="skill-cat">Backend</div></div>
+    <div class="skill-card"><div class="skill-icon">🅱️</div><div class="skill-name">Bootstrap</div><div class="skill-cat">UI Framework</div></div>
+    <div class="skill-card"><div class="skill-icon">📱</div><div class="skill-name">Android / Java</div><div class="skill-cat">Mobile</div></div>
+    <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Networking</div><div class="skill-cat">Infrastructure</div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="reveal">
+    <div class="section-label">My Journey</div>
+    <div class="section-title">Work Experience</div>
+  </div>
+  <div class="timeline">
+
+    <div class="exp-item reveal">
+      <div class="exp-dot current"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">Mantis Company</div>
+          <div class="exp-period">2023 – Present</div>
+        </div>
+        <div class="exp-role">Full Stack Developer</div>
+        <ul class="exp-bullets">
+          <li>Build and maintain full stack web applications using React.js, ASP.NET MVC, and C#</li>
+          <li>Develop responsive frontend interfaces with Angular and Bootstrap</li>
+          <li>Design and implement RESTful APIs and backend services</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot current"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">Bank of Sudan</div>
+          <div class="exp-period">Aug 2022 – Present</div>
+        </div>
+        <div class="exp-role">Full Stack Developer</div>
+        <ul class="exp-bullets">
+          <li>Develop and maintain full stack banking web applications</li>
+          <li>Build frontend interfaces using React.js and Angular</li>
+          <li>Implement backend services and APIs using ASP.NET MVC and C#</li>
+          <li>Ensure system reliability, security, and performance in a banking environment</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">AL Salam Bank</div>
+          <div class="exp-period">Feb 2022 – Aug 2022</div>
+        </div>
+        <div class="exp-role">IT Department Training</div>
+        <ul class="exp-bullets">
+          <li>Technical support and IT infrastructure maintenance</li>
+          <li>Assisted in software deployment and system monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">Al-Ehsan Supermarket</div>
+          <div class="exp-period">Jun 2021 – Jan 2022</div>
+        </div>
+        <div class="exp-role">System Monitor</div>
+        <ul class="exp-bullets">
+          <li>Managed bills entry, product pricing, and system monitoring</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-card">
+        <div class="exp-header">
+          <div class="exp-company">FBS Company</div>
+          <div class="exp-period">4 months</div>
+        </div>
+        <div class="exp-role">Trainee Developer</div>
+        <ul class="exp-bullets">
+          <li>Hands-on training in web development and software engineering</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses">
+  <div class="reveal">
+    <div class="section-label">Continuous Learning</div>
+    <div class="section-title">Courses & Certifications</div>
+  </div>
+  <div class="courses-grid reveal">
+    <div class="course-card"><div class="course-icon">🔷</div><div class="course-name">ASP.NET Core Web API Development Guide</div></div>
+    <div class="course-card"><div class="course-icon">🛒</div><div class="course-name">.NET Core MVC – The Complete Guide 2026 [E-commerce][MVC]</div></div>
+    <div class="course-card"><div class="course-icon">🌍</div><div class="course-name">English Language Course</div></div>
+    <div class="course-card"><div class="course-icon">📷</div><div class="course-name">CCTV Systems Course</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-label">Get in Touch</div>
+    <div class="section-title">Let's Work Together</div>
+    <div class="contact-card">
+      <p style="color:var(--gray); font-size:0.95rem;">Have a project in mind? I'm available for freelance work and open to new opportunities.</p>
+      <a href="mailto:Zeinabsalah41997@gmail.com" class="contact-email">Zeinabsalah41997@gmail.com</a>
+      <a href="mailto:Zeinabsalah41997@gmail.com" class="btn-primary">Send Me a Message</a>
+      <div class="contact-info">
+        <div class="contact-item">📞 096-68567995</div>
+        <div class="contact-item">📍 Sudan — Remote Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Zeinab Salah Eldin — Full Stack Developer</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
