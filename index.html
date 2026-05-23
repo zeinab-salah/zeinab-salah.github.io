@@ -250,6 +250,19 @@
     color: var(--gray); font-size: 0.82rem;
   }
 
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: all 0.3s; }
+  .project-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+  .project-img-wrap { overflow: hidden; }
+  .project-img { width: 100%; height: 200px; object-fit: cover; object-position: top; display: block; border-bottom: 1px solid var(--border); transition: transform 0.4s; }
+  .project-card:hover .project-img { transform: scale(1.04); }
+  .project-body { padding: 1.3rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.8rem; }
+  .project-tag { font-size: 0.7rem; font-weight: 500; background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25); color: var(--accent); padding: 0.2rem 0.6rem; border-radius: 20px; }
+  .project-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 0.4rem; }
+  .project-desc { font-size: 0.83rem; color: var(--gray); line-height: 1.6; }
+
   /* SCROLL REVEAL */
   .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -262,6 +275,7 @@
   <ul class="nav-links">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#courses">Courses</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -399,6 +413,116 @@
         <ul class="exp-bullets">
           <li>Hands-on training in web development and software engineering</li>
         </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="reveal">
+    <div class="section-label">My Work</div>
+    <div class="section-title">Projects</div>
+  </div>
+  <div class="projects-grid reveal">
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic1.png" alt="Project 1"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Full Stack</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project One</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic2.png" alt="Project 2"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">React</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project Two</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic3.png" alt="Project 3"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">ASP.NET</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project Three</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic4.png" alt="Project 4"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Angular</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project Four</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic5.png" alt="Project 5"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">C#</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project Five</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic6.png" alt="Project 6"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">PHP</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project Six</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img-wrap">
+        <img class="project-img" src="images/pic7.png" alt="Project 7"/>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">Mobile</span>
+          <span class="project-tag">Edit Me</span>
+        </div>
+        <div class="project-name">Project Seven</div>
+        <div class="project-desc">Add a short description of this project — what it does, who it's for, and what problem it solves.</div>
       </div>
     </div>
 
